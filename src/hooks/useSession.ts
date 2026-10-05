@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { pauseBeep, playBeep, resumeBeep, stopBeep } from '../audio'
 import type { SessionState, TimerConfig } from '../types'
+import { useWakeLock } from './useWakeLock'
 
 const PREPARATION_SECONDS = 10
 const WARNING_SECONDS = 10
@@ -66,6 +67,9 @@ export function useSession(config: TimerConfig): UseSessionResult {
       paused: false,
     }
   }, [])
+
+  // Wake Lock: pantalla encendida mientras la sesión esté en curso (se libera al finalizar o desmontar).
+  useWakeLock(state.phase !== 'done')
 
   useEffect(() => {
     if (state.paused || state.phase === 'done') return
