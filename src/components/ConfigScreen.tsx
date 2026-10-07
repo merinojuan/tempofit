@@ -118,12 +118,13 @@ export function ConfigScreen({ onStart }: ConfigScreenProps) {
   }, [deleteTarget, loadSaved])
 
   return (
-    <div className="flex w-full flex-col items-center gap-8">
-      <section className="card card-border w-full bg-base-300/20 backdrop-blur-xs">
+    <div>
+      <section className="card shadow-2xl w-full backdrop-blur-xs bg-base-200/10 dark:bg-base-200/60">
         <div className="card-body gap-4 p-5">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-sm font-semibold tracking-widest opacity-70">MIS TEMPOS</h2>
             <button type="button" className="btn btn-primary btn-sm" onClick={openModal}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
               Nuevo tempo
             </button>
           </div>
@@ -145,18 +146,19 @@ export function ConfigScreen({ onStart }: ConfigScreenProps) {
                   </div>
                   <button
                     type="button"
-                    className="btn btn-primary btn-soft btn-sm"
+                    className="btn btn-soft btn-circle btn-primary"
                     onClick={() => onStart(timer)}
+                    aria-label={`Iniciar tempo ${timerKey(timer)}`}
                   >
-                    Iniciar
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16l13 -8l-13 -8" /></svg>
                   </button>
                   <button
                     type="button"
-                    className="btn btn-ghost btn-sm btn-circle"
+                    className="btn btn-soft btn-circle btn-primary"
                     onClick={() => requestDelete(timer)}
                     aria-label={`Eliminar tempo ${timerKey(timer)}`}
                   >
-                    ✕
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
                   </button>
                 </li>
               ))}

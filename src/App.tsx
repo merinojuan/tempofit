@@ -30,29 +30,32 @@ export default function App() {
   }, [theme])
 
   return (
-    <div className="relative min-h-full text-base-content">
+    <div className="relative min-h-full h-full text-base-content">
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [background-position:0_0] dark:bg-base-100 dark:bg-[radial-gradient(#33333a_1px,transparent_1px)]"
+        className="rain-effect absolute inset-0 -z-10 h-full w-full"
       />
 
-      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 py-6">
-        <header className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-transparent py-3">
-          <h1 className="font-title text-4xl leading-none tracking-tight">
-            Tempo<span className="text-primary">Fit</span>
-          </h1>
-          <button
-            type="button"
-            className="btn btn-sm gap-2"
-            onClick={handleThemeToggle}
-            aria-label="Cambiar tema"
-          >
-            <span className="text-lg leading-none">{theme === 'dark' ? '☀️' : '🌙'}</span>
-            {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
-          </button>
-        </header>
-
-        <main className="flex flex-1 flex-col items-center justify-center gap-8 py-4">
+      <div className="flex items-center mx-auto h-full w-full max-w-md px-4 py-6">
+        <main className="w-full py-4">
+          <header className="flex items-center justify-between gap-4 px-8 py-6">
+            <h1 className="font-title text-4xl leading-none tracking-tight">
+              Tempo<span className="text-primary">Fit</span>
+            </h1>
+            <button
+              type="button"
+              className="btn btn-circle btn-primary btn-soft gap-2"
+              onClick={handleThemeToggle}
+              aria-label="Cambiar tema"
+            >
+              <span className="text-lg leading-none">{theme === 'dark'
+                ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+                : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /></svg>
+              }</span>
+              {/*{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}*/}
+              {/*{theme === 'dark' ? '☀️' : '🌙'}*/}
+            </button>
+          </header>
           {view === 'config' || !config ? (
             <ConfigScreen onStart={handleStart} />
           ) : (

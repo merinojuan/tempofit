@@ -86,7 +86,7 @@ export function TimerScreen({ config, onExit, theme }: TimerScreenProps) {
 
   if (state.phase === 'done') {
     return (
-      <div className="card card-border w-full bg-base-300/20 backdrop-blur-xs">
+      <div className="card shadow-2xl w-full backdrop-blur-xs bg-base-200/10 dark:bg-base-200/60">
         <div className="card-body flex w-full flex-col items-center gap-8 text-center">
           <span className={`badge ${meta.badgeClass} gap-2 px-4 py-3`}>
             <span className="inline-block h-2 w-2 rounded-full bg-current" />
@@ -105,7 +105,7 @@ export function TimerScreen({ config, onExit, theme }: TimerScreenProps) {
   }
 
   return (
-    <div className="card card-border w-full bg-base-300/20 backdrop-blur-xs">
+    <div className="card shadow-2xl w-full backdrop-blur-xs bg-base-200/10 dark:bg-base-200/60">
       <div className="card-body flex w-full flex-col items-center gap-8 text-center">
         <span className={`badge ${meta.badgeClass} gap-2 px-4 py-3`}>
           <span className="inline-block h-2 w-2 rounded-full bg-current" />
@@ -135,13 +135,13 @@ export function TimerScreen({ config, onExit, theme }: TimerScreenProps) {
         <div className="flex flex-col items-center gap-3">
           {state.phase === 'preparation' ? (
             <>
-              <h2 className="text-xl font-bold tracking-wide">COMENZANDO</h2>
-              <p className="text-lg opacity-80">Ronda {state.currentRound}</p>
+              {/*<h2 className="text-xl font-bold tracking-wide">COMENZANDO</h2>*/}
+              <h2 className="text-xl font-bold">RONDA {state.currentRound}</h2>
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold">Ronda {state.currentRound} de {state.totalRounds}</h2>
-              {state.phase === 'rest' && <p className="text-lg font-semibold opacity-90">Descansa</p>}
+              <h2 className="text-xl font-bold">RONDA {state.currentRound} ● {state.totalRounds}</h2>
+              {/*{state.phase === 'rest' && <p className="text-lg font-semibold opacity-90">Descansa</p>}*/}
             </>
           )}
 
@@ -169,13 +169,17 @@ export function TimerScreen({ config, onExit, theme }: TimerScreenProps) {
         <div className="flex w-full items-center justify-center gap-3">
           <button
             type="button"
-            className={`btn min-w-32 ${state.paused ? 'btn-primary' : 'btn-soft'}`}
+            className={`btn btn-circle btn-primary ${state.paused ? '' : 'btn-soft'}`}
             onClick={handlePauseToggle}
+            aria-label="Pausar / Reanudar tempo"
           >
-            {state.paused ? 'Reanudar' : 'Pausar'}
+            {state.paused
+              ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16l13 -8l-13 -8" /></svg>
+              : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -12" /><path d="M14 6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -12" /></svg>
+            }
           </button>
-          <button type="button" className="btn btn-soft btn-error min-w-32" onClick={requestFinalize}>
-            Finalizar
+          <button type="button" className="btn btn-circle btn-error btn-soft" onClick={requestFinalize} aria-label="Finalizar tempo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 7a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l0 -10" /></svg>
           </button>
         </div>
       </div>
