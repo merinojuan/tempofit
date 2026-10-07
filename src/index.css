@@ -127,8 +127,8 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
-  backdrop-filter: blur(var(--rain-blur)) brightness(var(--rain-brightness));
   -webkit-backdrop-filter: blur(var(--rain-blur)) brightness(var(--rain-brightness));
+  backdrop-filter: blur(var(--rain-blur)) brightness(var(--rain-brightness));
 
   background-image: radial-gradient(
     circle at 50% 50%,
