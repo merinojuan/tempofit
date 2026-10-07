@@ -30,13 +30,13 @@ export default function App() {
   }, [theme])
 
   return (
-    <div className="relative min-h-full h-full text-base-content">
+    <div className="relative min-h-dvh h-dvh text-base-content">
       <div
         aria-hidden
-        className="rain-effect absolute inset-0 -z-10 h-full w-full"
+        className="rain-effect absolute inset-0 -z-10 h-dvh w-full"
       />
 
-      <div className="flex items-center mx-auto h-full w-full max-w-md px-4 py-6">
+      <div className="flex items-center mx-auto h-dvh w-full max-w-md px-4 py-6">
         <main className="w-full py-4">
           <header className="flex items-center justify-between gap-4 px-8 py-6">
             <h1 className="font-title text-4xl leading-none tracking-tight">
